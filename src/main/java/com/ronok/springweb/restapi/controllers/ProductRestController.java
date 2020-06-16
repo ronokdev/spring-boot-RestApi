@@ -3,10 +3,7 @@ package com.ronok.springweb.restapi.controllers;
 import com.ronok.springweb.restapi.entities.Product;
 import com.ronok.springweb.restapi.repos.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -29,13 +26,13 @@ public class ProductRestController
     }
 
     @RequestMapping(value = "/products/",method = RequestMethod.POST)
-    public Product createProduct(Product product)
+    public Product createProduct(@RequestBody Product product)
     {
         return productRepository.save(product);
     }
 
     @RequestMapping(value = "/products/",method = RequestMethod.PATCH)
-    public Product updateProduct(Product product)
+    public Product updateProduct(@RequestBody Product product)
     {
         return productRepository.save(product);
     }
