@@ -26,7 +26,25 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
+
+
+			<!-- EXCLUDE TOMCAT ####### START -->
+<!--			<exclusions>-->
+<!--				<exclusion>-->
+<!--					<groupId>org.springframework.boot</groupId>-->
+<!--					<artifactId>spring-boot-starter-tomcat</artifactId>-->
+<!--				</exclusion>-->
+<!--			</exclusions>-->
+			<!-- EXCLUDE TOMCAT ####### END -->
 		</dependency>
+
+		<!-- INCLUDE undertow instead of tomcat ####### START -->
+<!--		<dependency>-->
+<!--			<groupId>org.springframework.boot</groupId>-->
+<!--			<artifactId>spring-boot-starter-undertow</artifactId>-->
+<!--		</dependency>-->
+		<!-- INCLUDE undertow instead of tomcat ####### END -->
+
 
 		<dependency>
 			<groupId>mysql</groupId>
