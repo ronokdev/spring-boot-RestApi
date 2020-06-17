@@ -2,17 +2,20 @@ package com.ronok.springweb.restapi;
 
 import com.ronok.springweb.restapi.entities.Product;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.web.client.RestTemplate;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 class RestapiApplicationTests {
+	@Value("${producttestapi.servic.url}")
+	private String productapiurl;
 
 	@Test
 	public void testGetProduct() {
 		RestTemplate restTemplate = new RestTemplate();
-		Product product = restTemplate.getForObject("http://localhost:8080/springbootapi/products/3",Product.class);
+		Product product = restTemplate.getForObject(productapiurl+"3",Product.class);
 		assertNotNull(product);
 		assertEquals("Xioami",product.getName());
 
@@ -27,13 +30,13 @@ class RestapiApplicationTests {
 		product.setName("Samsung");
 		product.setDescription("This is Samsung Phone");
 		product.setPrice(70000);
-		Product newProduct = restTemplate.postForObject("http://localhost:8080/springbootapi/products/",product,Product.class);
+		Product newProduct = restTemplate.postForObject(productapiurl,product,Product.class);
 
 		assertNotNull(newProduct);
 		assertNotNull(newProduct.getId());
 		assertEquals("Samsung",newProduct.getName());
 
-		restTemplate.delete("http://localhost:8080/springbootapi/products/"+newProduct.getId());
+		restTemplate.delete(productapiurl+newProduct.getId());
 
 
 
@@ -42,10 +45,10 @@ class RestapiApplicationTests {
 	@Test
 	public void updateProduct() {
 		RestTemplate restTemplate = new RestTemplate();
-		Product product = restTemplate.getForObject("http://localhost:8080/springbootapi/products/3",Product.class);
-		product.setPrice(980000);
+		Product product = restTemplate.getForObject(productapiurl+"3",Product.class);
+		product.setPrice(35000);
 
-		restTemplate.put("http://localhost:8080/springbootapi/products/",product);
+		restTemplate.put(productapiurl,product);
 
 	}
 
