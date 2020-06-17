@@ -31,7 +31,7 @@ public class ProductRestController
         return productRepository.save(product);
     }
 
-    @RequestMapping(value = "/products/",method = RequestMethod.PATCH)
+    @RequestMapping(value = "/products/",method = RequestMethod.PUT)
     public Product updateProduct(@RequestBody Product product)
     {
         return productRepository.save(product);

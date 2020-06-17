@@ -33,5 +33,20 @@ class RestapiApplicationTests {
 		assertNotNull(newProduct.getId());
 		assertEquals("Samsung",newProduct.getName());
 
+		restTemplate.delete("http://localhost:8080/springbootapi/products/"+newProduct.getId());
+
+
+
 	}
+
+	@Test
+	public void updateProduct() {
+		RestTemplate restTemplate = new RestTemplate();
+		Product product = restTemplate.getForObject("http://localhost:8080/springbootapi/products/3",Product.class);
+		product.setPrice(980000);
+
+		restTemplate.put("http://localhost:8080/springbootapi/products/",product);
+
+	}
+
 }
