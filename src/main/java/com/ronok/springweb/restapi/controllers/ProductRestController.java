@@ -2,6 +2,8 @@ package com.ronok.springweb.restapi.controllers;
 
 import com.ronok.springweb.restapi.entities.Product;
 import com.ronok.springweb.restapi.repos.ProductRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,6 +14,8 @@ public class ProductRestController
 {
     @Autowired
     ProductRepository productRepository;
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(ProductRestController.class);
 
     @RequestMapping(value = "/products/",method = RequestMethod.GET)
     public List<Product> getProducts()
@@ -40,6 +44,7 @@ public class ProductRestController
     @RequestMapping(value = "/products/{id}",method = RequestMethod.DELETE)
     public void deleteProduct(@PathVariable("id") int id)
     {
+        LOGGER.info("Deleting the Product with ID : "+id);
         productRepository.deleteById(id);
     }
 }
