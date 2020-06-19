@@ -78,6 +78,16 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<!--	Telling Spring Boot to Make a build info while starting the application & show it to the actuator Endpoint  -->
+				<executions>
+					<execution>
+						<goals>
+							<goal>
+								build-info
+							</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
