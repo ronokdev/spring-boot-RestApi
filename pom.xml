@@ -89,6 +89,13 @@
 			<artifactId>hazelcast-spring</artifactId>
 		</dependency>
 
+		<!--		adding spring batch         START -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-batch</artifactId>
+		</dependency>
+		<!--		adding spring batch         END -->
+
 	</dependencies>
 
 	<build>
