@@ -1,7 +1,10 @@
 package com.ronok.springweb.restapi.batch;
 
+import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
+import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
+import org.springframework.batch.core.launch.support.RunIdIncrementer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -10,6 +13,17 @@ public class batchConfig
 {
 
     private StepBuilderFactory stepBuilderFactory;
+    private JobBuilderFactory jobBuilderFactory;
+
+    @Bean
+    public Job job()
+    {
+        return jobBuilderFactory.get("job_1")
+                .incrementer(new RunIdIncrementer()) //create a new ID for every JOB
+                .listener(myJobListener()) //
+                .start(step())
+                .build(); // create a new JOB
+    }
 
     @Bean
     public Step step()
