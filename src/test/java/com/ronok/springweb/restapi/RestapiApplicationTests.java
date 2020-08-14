@@ -64,14 +64,15 @@ class RestapiApplicationTests {
 
 	// Test Batch
 	@Autowired
-	JobLauncher jobLauncher;
+	private JobLauncher jobLauncher;
 
 	@Autowired
-	Job job;
+	private Job job;
 
+	@Test
 	public void testBatch() throws JobParametersInvalidException, JobExecutionAlreadyRunningException, JobRestartException, JobInstanceAlreadyCompleteException
 	{
-		JobParameters jobParameters = new JobParametersBuilder().addString(name,"Ronok").toJobParameters();
+		JobParameters jobParameters = new JobParametersBuilder().addLong("time",System.currentTimeMillis()).toJobParameters();
 		jobLauncher.run(job,jobParameters);
 	}
 
