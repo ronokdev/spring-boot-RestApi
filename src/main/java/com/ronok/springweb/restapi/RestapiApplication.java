@@ -7,7 +7,7 @@ import org.springframework.cache.annotation.EnableCaching;
 
 @SpringBootApplication
 @EnableCaching
-@EnableBatchProcessing
+//@EnableBatchProcessing
 //This will exclue the auto configuration of the 'DataSourceAutoConfiguration.class' on application startup
 //@EnableAutoConfiguration(exclude = {DataSourceAutoConfiguration.class})
 public class RestapiApplication {

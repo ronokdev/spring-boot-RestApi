@@ -18,8 +18,8 @@ public class Product implements Serializable
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    private String name;
-    private String description;
-    private int price;
+    public int id;
+    public String name;
+    public String description;
+    public int price;
 }
