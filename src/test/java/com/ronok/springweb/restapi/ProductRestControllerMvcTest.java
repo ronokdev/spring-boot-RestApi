@@ -1,5 +1,6 @@
 package com.ronok.springweb.restapi;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import com.ronok.springweb.restapi.entities.Product;
@@ -8,6 +9,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.*;
+import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
 
@@ -48,6 +50,21 @@ public class ProductRestControllerMvcTest
                 .andExpect(status().isOk())
                 .andExpect(content().json(objectWriter.writeValueAsString(products)));
 
+    }
+
+    @Test
+    public void testCreateProduct() throws Exception
+    {
+        Product product = buildProduct();
+        when(productRepository.save(any())).thenReturn(product);
+
+        ObjectWriter objectWriter = new ObjectMapper().writer().withDefaultPrettyPrinter();
+
+        mockMvc.perform(post(PRODUCT_URL)
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectWriter.writeValueAsString(product)))
+                .andExpect(status().isOk())
+                .andExpect(content().json(objectWriter.writeValueAsString(product)));
     }
 
 
