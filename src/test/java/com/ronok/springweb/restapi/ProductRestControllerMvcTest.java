@@ -67,6 +67,31 @@ public class ProductRestControllerMvcTest
                 .andExpect(content().json(objectWriter.writeValueAsString(product)));
     }
 
+    @Test
+    public void testUpdateProduct() throws Exception
+    {
+        Product product = buildProduct();
+        product.setPrice(11000);
+
+        when(productRepository.save(any())).thenReturn(product);
+
+        ObjectWriter objectWriter = new ObjectMapper().writer().withDefaultPrettyPrinter();
+
+        mockMvc.perform(put(PRODUCT_URL)
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectWriter.writeValueAsString(product)))
+                .andExpect(status().isOk())
+                .andExpect(content().json(objectWriter.writeValueAsString(product)));
+    }
+
+    @Test
+    public void testDeleteProduct() throws Exception
+    {
+        doNothing().when(productRepository).deleteById(PRODUCT_ID);   // we are using doNothing() as delete method is void
+
+        mockMvc.perform(delete(PRODUCT_URL+PRODUCT_ID)).andExpect(status().isOk());
+    }
+
 
     private Product buildProduct()
     {
