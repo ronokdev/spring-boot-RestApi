@@ -4,9 +4,11 @@ import org.springframework.batch.core.configuration.annotation.EnableBatchProces
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cache.annotation.EnableCaching;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @SpringBootApplication
 @EnableCaching
+@EnableSwagger2
 //@EnableBatchProcessing
 //This will exclue the auto configuration of the 'DataSourceAutoConfiguration.class' on application startup
 //@EnableAutoConfiguration(exclude = {DataSourceAutoConfiguration.class})
