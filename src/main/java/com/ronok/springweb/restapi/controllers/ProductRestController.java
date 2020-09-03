@@ -2,6 +2,7 @@ package com.ronok.springweb.restapi.controllers;
 
 import com.ronok.springweb.restapi.entities.Product;
 import com.ronok.springweb.restapi.repos.ProductRepository;
+import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,12 +21,16 @@ public class ProductRestController
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ProductRestController.class);
 
+    @ApiOperation(value="Retrieves All the Products",
+            notes = "A list of Product",
+            response = Product.class,
+            responseContainer = "List",
+            produces = "application/json")
     @RequestMapping(value = "/products/",method = RequestMethod.GET)
     public List<Product> getProducts()
     {
         return productRepository.findAll();
     }
-
 
     @RequestMapping(value = "/products/{id}",method = RequestMethod.GET)
     @Transactional(readOnly = true)
