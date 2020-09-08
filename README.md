@@ -1,3 +1,7 @@
+#### Reference URL
+* https://www.notion.so/ronok/Spring-Boot-3dde1c4b0417463faeac997e3b04d166
+
+
 #### Actuator URL 🌟
 * http://localhost:8080/springbootapi/actuator
 
@@ -18,4 +22,8 @@
     - Writer
     - Step
     - Job
-         
+  
+#### EndPoint Validation with Validation-API 🌟
+- Only Done for createProduct Endpoint      
+    
+           
