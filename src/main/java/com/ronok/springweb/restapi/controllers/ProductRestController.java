@@ -11,6 +11,7 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -41,7 +42,7 @@ public class ProductRestController
     }
 
     @RequestMapping(value = "/products/",method = RequestMethod.POST)
-    public Product createProduct(@RequestBody Product product)
+    public Product createProduct(@Valid @RequestBody Product product)
     {
         return productRepository.save(product);
     }
