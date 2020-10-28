@@ -21,8 +21,10 @@ public class ProductProfile implements Serializable
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int id;
+
     @Size(max = 100)
-    public String description_details;
+    @Column(name="description_details")
+    public String descriptionDetails;
 
 
 }
