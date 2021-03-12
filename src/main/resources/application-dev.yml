@@ -12,6 +12,11 @@ spring:
     job:
       enabled: false
     initialize-schema: false
+liquibase:
+  changeLog: db/changelog/db.changelog-master.yaml
+  dropFirst: true
+  labels: liquibase_running
+
 # Add context path to the application
 server:
   servlet:
@@ -27,6 +32,7 @@ logging:
   file: logs/application.log
   level:
     root: info
+    liquibase: info
     com:
       ronok:
         springweb:
