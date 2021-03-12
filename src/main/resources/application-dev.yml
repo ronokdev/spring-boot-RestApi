@@ -1,0 +1,57 @@
+# JDBC setup
+spring:
+  datasource:
+    url: jdbc:mysql://192.168.0.105:3306/spring_rest_test?serverTimezone=UTC
+    username: root
+    password: 123321
+  jpa:
+    hibernate.ddl-auto: update
+    generate-ddl: true
+    show-sql: true
+  batch:
+    job:
+      enabled: false
+    initialize-schema: false
+# Add context path to the application
+server:
+  servlet:
+    context-path: /springbootapi
+# Adding Common API URL
+producttestapi:
+  service:
+    url: http://localhost:8080/springbootapi/products/
+
+# adding log to a file
+# logging.file=logs/application.log
+logging:
+  file: logs/application.log
+  level:
+    root: info
+    com:
+      ronok:
+        springweb:
+          restapi:
+            controllers:
+              ProductRestController: error
+  org:
+    org:
+      springframework: error
+
+
+# Actuator Settings
+management:
+  endpoint:
+    health:
+      show-details: always
+    web:
+      exposure:
+        include: "*"
+
+
+# configuring Info Endpoint
+info:
+  app:
+    name: Spring Boot API Application
+    description: Testing Various setting of Spring Boot
+    version: 1.0.0
+# Hibernate Configuration
