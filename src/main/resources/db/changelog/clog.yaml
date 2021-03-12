@@ -1,0 +1,35 @@
+databaseChangeLog:
+  - changeSet:
+      id: newtable add product_profile
+      author: ronok
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: product_pkey
+                  name: id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: description_details
+                  type: VARCHAR(100)
+            tableName: product_profile
+            validate: true
+  - changeSet:
+      id: addForeignKeyConstraint-to_product
+      author: Ronok
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: product_profile_id
+            baseTableName: product
+            baseTableSchemaName: spring_rest_test
+            constraintName: fk_product_profile
+            referencedColumnNames: id
+            referencedTableName: product_profile
+            referencedTableSchemaName: spring_rest_test
+            validate: true

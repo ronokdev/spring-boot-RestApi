@@ -30,9 +30,11 @@ databaseChangeLog:
                   type: VARCHAR(250)
               - column:
                   name: price
-                  type: VARCHAR(250)
+                  type: VARCHAR(200)
               - column:
                   name: product_profile_id
                   type: BIGINT
             tableName: product
 
+  - include:
+     file: db/changelog/clog.yaml

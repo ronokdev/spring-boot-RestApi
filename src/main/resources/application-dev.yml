@@ -13,9 +13,9 @@ spring:
       enabled: false
     initialize-schema: false
 liquibase:
+  default-schema: spring_rest_test
+  drop-first: true
   changeLog: db/changelog/db.changelog-master.yaml
-  dropFirst: true
-  labels: liquibase_running
 
 # Add context path to the application
 server:
